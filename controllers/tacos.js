@@ -4,6 +4,22 @@ export {
     index,
     create,
     show,
+    flipTasty,
+}
+
+function flipTasty(req, res) {
+    Taco.findById(req.params.id)
+    .then(taco => {
+        taco.tasty = !taco.tasty
+        taco.save()
+    .then(()=> {
+        res.redirect(`/tacos/${taco._id}`)
+        })
+    })
+    .catch(err => {
+        console.log(err)
+        res.redirect('/tacos')
+    })
 }
 
 function show(req, res) {
