@@ -3,6 +3,22 @@ import { Taco } from '../models/taco.js'
 export {
     index,
     create,
+    show,
+}
+
+function show(req, res) {
+    Taco.findById(req.params.id)
+    .populate("owner")
+    .then(taco => {
+        res.render('tacos/show', {
+            taco,
+            title: "🌮 show"
+        })
+    })
+    .catch(err => {
+        console.log(err)
+        res.redirect('/tacos')
+    })
 }
 
 function create(req, res) {
