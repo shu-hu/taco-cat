@@ -16,7 +16,15 @@
 		<p>
             <a class="link" href="/tacos/<%= taco._id %>/edit">Edit this Taco!</a>
         </p>
+        <p> 
+            <form action="/tacos/<%= taco._id %>?_method=DELETE" method="post">
+                <button type="submit">
+                    Delete this taco 🌮💀
+                </button>
+            </form>
+        </p>
     <% } %>
+
 </section>
 
 <%- include('../partials/footer') %>
