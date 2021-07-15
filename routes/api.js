@@ -8,3 +8,4 @@ export {
 const router = Router()
 
 router.post('/ingredients', apiCtrl.createIngredient)
+router.get('/ingredients', apiCtrl.ingredientIndex)

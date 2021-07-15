@@ -1,7 +1,16 @@
 import { Ingredient } from '../models/ingredient.js'
 
 export {
-    createIngredient
+    createIngredient,
+    ingredientIndex,
+}
+
+function ingredientIndex(req, res) {
+    Ingredient.find({})
+    .then(ingredients => res.json(ingredients))
+    .catch(err => {
+        res.json(err)
+    })
 }
 
 function createIngredient(req, res) {
