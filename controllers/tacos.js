@@ -5,6 +5,21 @@ export {
     create,
     show,
     flipTasty,
+    edit,
+}
+
+function edit(req, res) {
+    Taco.findById(req.params.id)
+    .then(taco => {
+        res.render('tacos/edit', {
+            taco,
+            title: "edit 🌮"
+        })
+    })
+    .catch(err => {
+        console.log(err)
+        res.redirect('/tacos')
+    })
 }
 
 function flipTasty(req, res) {

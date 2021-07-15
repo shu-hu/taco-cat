@@ -12,6 +12,11 @@
             </button>
         </form>
     <% } %>
+    <% if (taco.owner.equals(user?.profile._id)) { %>
+		<p>
+            <a class="link" href="/tacos/<%= taco._id %>/edit">Edit this Taco!</a>
+        </p>
+    <% } %>
 </section>
 
 <%- include('../partials/footer') %>

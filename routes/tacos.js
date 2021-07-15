@@ -8,8 +8,8 @@ export {
 
 const router = Router()
 
-router.get('/', )
 router.get('/', tacosCtrl.index)
 router.get('/:id', tacosCtrl.show)
+router.get('/:id/edit', isLoggedIn, tacosCtrl.edit)
 router.post('/', isLoggedIn, tacosCtrl.create)
 router.put('/:id/flip-tasty', isLoggedIn, tacosCtrl.flipTasty)
