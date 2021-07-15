@@ -2,7 +2,8 @@
 <%- include('../partials/nav') %>
 <section>
     <h1>Tacos! 🌮🌮🌮</h1>
-    <h2>Add a Taco!</h2>
+    <% if (user) { %>
+        <h2>Add a Taco!</h2>
     <form action="/tacos" method="POST">
         <label>
             Name: 
@@ -14,13 +15,14 @@
         </label>
         <button type="submit">Add 🌮</button>
     </form>
+    <% } %>
     <h2>All the Tacos!</h2>
 	<ul>
         <% tacos.forEach(taco => { %>
             <li>
                 🌮 
                 <a href="/tacos/<%= taco._id %>"><%= taco.name %></a>
-                is <%= taco.tasty ? 'tasty' : 'not tasty' %>
+                    is <%= taco.tasty ? 'tasty' : 'not tasty' %>
             </li>
         <% }) %>
     </ul>
