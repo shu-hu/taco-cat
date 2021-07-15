@@ -6,6 +6,26 @@ export {
     show,
     flipTasty,
     edit,
+    update,
+}
+
+function update(req, res) {
+    Taco.findById(req.params.id)
+    .then(taco => {
+        if (taco.owner.equals(req.user.profile._id)) {
+            req.body.tasty = !!req.body.tasty
+            taco.update(req.body, {new: true})
+            .then(()=> {
+                res.redirect(`/tacos/${taco._id}`)
+            })
+        } else {
+            throw new Error ('🚫 Not authorized 🚫')
+        }
+    })
+    .catch(err => {
+        console.log(err)
+        res.redirect(`/tacos`)
+    })
 }
 
 function edit(req, res) {
